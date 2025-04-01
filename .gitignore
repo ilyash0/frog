@@ -120,20 +120,6 @@ pyvenv.cfg
 .venv
 pip-selfcheck.json
 
-### Web template
-*.asp
-*.cer
-*.csr
-*.css
-*.htm
-*.html
-*.js
-*.jsp
-*.php
-*.rss
-*.wasm
-*.wat
-*.xhtml
 
 ### Django template
 *.log
