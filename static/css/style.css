@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Стили хедера */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Раздвигаем элементы по краям */
+    padding: 2rem 1.5rem;
+    box-shadow: 0 0 10px lightgrey;
+}
+
+.header-right a {
+    color: black;
+    text-decoration: none;
+}
+
+.header-right a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+/* Левая часть: иконка и текст */
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+
+/* Текст рядом с иконкой */
+.header-title {
+    color: #FFFFFF;
+}
+
+/* Правая часть: кнопки */
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right button {
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 0.4rem 0.8rem;
+    margin-left: 0.5rem;
+}
+
+/* Стиль для кнопки "Sign in" */
+.sign-in {
+    background-color: #eee; /* Белый фон */
+    color: #333333; /* Тёмный текст */
+    border: 1px solid #999;
+}
+
+/* Стиль для кнопки "Register" */
+.register {
+    background-color: #333333; /* Тёмный фон */
+    color: #FFFFFF; /* Светлый текст */
+    border: 1px solid #333333;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between; /* Раздвигаем блоки слева и справа */
+    align-items: flex-start; /* Выравниваем по верхней границе */
+    background-color: #ffffff; /* Белый фон */
+    color: #000000; /* Чёрный текст */
+    padding: 2rem; /* Отступы внутри футера */
+    border-top: 1px solid #ccc; /* Для наглядного разделения сверху */
+}
+
+/* Левая часть футера: иконки */
+.footer-left {
+    display: flex;
+    gap: 1rem; /* Расстояние между иконками */
+}
+
+.footer-left img {
+    width: 24px;
+    height: 24px;
+    /* При необходимости используйте другие размеры или SVG-иконки */
+    cursor: pointer;
+}
+
+/* Правая часть футера: три колонки со ссылками */
+.footer-links {
+    display: flex;
+    gap: 3rem; /* Расстояние между колонками */
+}
+
+.footer-column {
+    padding: 2rem;
+}
+
+.footer-column h4 {
+    padding: 0.2rem;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.footer-column ul {
+
+    list-style: none; /* Убираем маркеры списка */
+}
+
+.footer-column li {
+    padding: 0.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.footer-column a {
+    text-decoration: none;
+    color: inherit; /* Используем основной цвет текста (чёрный) */
+    font-size: 0.9rem;
+}
+
+.footer-column a:hover {
+    text-decoration: underline; /* Эффект при наведении */
+}

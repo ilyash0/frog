@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Карманная лягушка</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
+<body>
+
+<header>
+    <div class="header-left">
+        <div class="logo">88
+        </div>
+    </div>
+
+    <div class="header-right">
+        <a href="home" class="header__link">Кодекс лягушек</a>
+        <button class="sign-in" style="margin-left: 1rem;">Sign in</button>
+        <button class="register">Register</button>
+    </div>
+</header>
+
+{% block content %}{% endblock %}
+
+<footer>
+    <div class="footer-left">
+        <img src="figma-icon.png" alt="Figma">
+        <img src="x-icon.png" alt="X (Twitter)">
+        <img src="instagram-icon.png" alt="Instagram">
+        <img src="youtube-icon.png" alt="YouTube">
+        <img src="linkedin-icon.png" alt="LinkedIn">
+    </div>
+
+    <div class="footer-links">
+        <div class="footer-column">
+            <h4>Use cases</h4>
+            <ul>
+                <li><a href="#">UI design</a></li>
+                <li><a href="#">UX design</a></li>
+                <li><a href="#">Wireframing</a></li>
+                <li><a href="#">Diagramming</a></li>
+                <li><a href="#">Brainstorming</a></li>
+                <li><a href="#">Online whiteboard</a></li>
+                <li><a href="#">Team collaboration</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Explore</h4>
+            <ul>
+                <li><a href="#">Design</a></li>
+                <li><a href="#">Prototyping</a></li>
+                <li><a href="#">Development features</a></li>
+                <li><a href="#">Design systems</a></li>
+                <li><a href="#">Collaboration features</a></li>
+                <li><a href="#">Design process</a></li>
+                <li><a href="#">FigJam</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Best practices</a></li>
+                <li><a href="#">Colors</a></li>
+                <li><a href="#">Color wheel</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Developers</a></li>
+                <li><a href="#">Resource library</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
