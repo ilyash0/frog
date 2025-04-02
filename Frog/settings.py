@@ -32,6 +32,12 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+AUTHENTICATION_BACKENDS = [
+    'user.backends.EmailOrUsernameBackend',
+    'django.contrib.auth.backends.ModelBackend',  # на случай, если понадобится стандартный вариант
+]
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
