@@ -44,7 +44,7 @@ header {
 .header-right button {
     cursor: pointer;
     border-radius: 10px;
-    padding: 0.4rem 0.8rem;
+    padding: 0.4rem 1rem;
     margin-left: 0.5rem;
 }
 
@@ -69,31 +69,28 @@ header {
 
 footer {
     display: flex;
-    justify-content: space-between; /* Раздвигаем блоки слева и справа */
-    align-items: flex-start; /* Выравниваем по верхней границе */
-    background-color: #ffffff; /* Белый фон */
-    color: #000000; /* Чёрный текст */
-    padding: 2rem; /* Отступы внутри футера */
-    border-top: 1px solid #ccc; /* Для наглядного разделения сверху */
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 2rem;
+    border-top: 1px solid #ccc;
 }
 
-/* Левая часть футера: иконки */
 .footer-left {
     display: flex;
-    gap: 1rem; /* Расстояние между иконками */
+    gap: 1rem;
 }
 
 .footer-left img {
     width: 24px;
     height: 24px;
-    /* При необходимости используйте другие размеры или SVG-иконки */
     cursor: pointer;
 }
 
-/* Правая часть футера: три колонки со ссылками */
 .footer-links {
     display: flex;
-    gap: 3rem; /* Расстояние между колонками */
+    gap: 3rem;
 }
 
 .footer-column {

@@ -3,21 +3,24 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Страница{% endblock %}</title>
+    <title>{% block title %}ЛЯГУШКИИИ!{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="icon" href="{% static 'img/icon.png' %}">
 </head>
 <body>
 
 <header>
     <div class="header-left">
-        <div class="logo">88
+        <div class="logo" onclick="window.location.replace('/')">
+            <img src="{% static 'img/icon.png' %}" width="50px" alt="icon">
         </div>
     </div>
 
     <div class="header-right">
-        <a href="home" class="header__link">Кодекс лягушек</a>
-        <button class="white-button" style="margin-left: 1.5rem;" onclick="window.location.replace('/login/')">Sign in</button>
-        <button class="black-button" onclick="window.location.replace('/signup/')">Register</button>
+        <a href="/" class="header__link">Кодекс лягушек</a>
+        <button class="white-button" style="margin-left: 1.5rem;" onclick="window.location.replace('/login/')">Войти
+        </button>
+        <button class="black-button" onclick="window.location.replace('/signup/')">Зарегистрироваться</button>
     </div>
 </header>
 
