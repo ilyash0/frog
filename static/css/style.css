@@ -49,19 +49,19 @@ header {
 }
 
 
-.sign-in {
+.white-button {
     background-color: #eee;
     color: #333333;
     border: 1px solid #999;
 }
 
-.sign-in:hover {
+.white-button:hover {
     background-color: #ccc;
     color: #333333;
     border: 1px solid #999;
 }
 
-.register {
+.black-button {
     background-color: #333333;
     color: #FFFFFF;
     border: 1px solid #333333;
@@ -152,6 +152,13 @@ footer {
     font-size: 64px;
     margin-bottom: 20px;
     font-weight: bold;
+}
+
+.card-subheader {
+    color: #757575;
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
 }
 
 input[type="text"],

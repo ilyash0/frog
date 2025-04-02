@@ -1,4 +1,17 @@
 {% extends 'base.html' %}
+{% block title %}ЛЯГУШКИИ!{% endblock %}
+
 {% block content %}
-    
+    <div class="container">
+        <div class="card-header">
+            Карманная лягушка
+        </div>
+        <div class="card-subheader">
+            Собери их всех!
+        </div>
+        <div style="display: flex;">
+            <button style="margin: 15px;" class="white-button" onclick="window.location.replace('/login/')">Получить лягушку</button>
+            <button style="margin: 15px;" class="black-button" onclick="window.location.replace('/signup/')">Подарить ляшуку</button>
+        </div>
+    </div>
 {% endblock %}
