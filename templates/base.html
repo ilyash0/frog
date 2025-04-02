@@ -3,7 +3,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Карманная лягушка</title>
+    <title>{% block title %}Страница{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 </head>
 <body>
@@ -16,8 +16,8 @@
 
     <div class="header-right">
         <a href="home" class="header__link">Кодекс лягушек</a>
-        <button class="sign-in" style="margin-left: 1rem;">Sign in</button>
-        <button class="register">Register</button>
+        <button class="sign-in" style="margin-left: 1.5rem;" onclick="window.location.replace('/login/')">Sign in</button>
+        <button class="register" onclick="window.location.replace('/signup/')">Register</button>
     </div>
 </header>
 

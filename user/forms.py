@@ -1,15 +1,17 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from .models import User
 from django.contrib.auth import authenticate
 
 
 class CustomAuthenticationForm(forms.Form):
     username_or_email = forms.CharField(
+        label="Имя пользователя или Email",
         max_length=254,
-        widget=forms.TextInput(attrs={'placeholder': 'Имя пользователя или Email'})
+        widget=forms.TextInput
     )
-    password = forms.CharField(label="Пароль", widget=forms.PasswordInput)
+    password = forms.CharField(label="Пароль",
+                               widget=forms.PasswordInput)
 
     def clean(self):
         username_or_email = self.cleaned_data.get('username_or_email')
@@ -27,8 +29,18 @@ class CustomAuthenticationForm(forms.Form):
 
 
 class SignUpForm(UserCreationForm):
-    email = forms.EmailField(required=True, help_text='Обязательное поле.')
-
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
+
+        labels = {
+            'username': 'Имя пользователя',
+            'email': 'Почта',
+            'password1': 'Пароль',
+            'password2': 'Подтверждение пароля',
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name in ['username', 'email', 'password1', 'password2']:
+            self.fields[field_name].help_text = ''
