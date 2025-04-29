@@ -1,24 +1,57 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Профиль пользователя{% endblock %}
 {% block header %}Профиль{% endblock %}
 
 {% block content %}
-    <div class="container" style="min-height: 20vh; align-items: start">
-        <h1 style="margin: 25px" class="card-header">{{ user.username }}</h1>
+    <div class="container" style="min-height: 25vh;">
+        <div class="card-header">{{ user.username }}</div>
     </div>
     <section class="profile-container">
         <div class="settings">
             <h1>Настройки</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ settings_form.as_p }}
+                <button type="submit" class="black-button" style="width: auto;">Сохранить настройки</button>
+            </form>
         </div>
 
-        <div class="frogs">
-            <h1>Список лягушек</h1>
-            <ul>
-                <li>Лягушка 1</li>
-                <li>Лягушка 2</li>
-                <li>Лягушка 3</li>
-            </ul>
+        <div class="container-fluid list-container frogs">
+            <h1>Ваши лягушки</h1>
+            <p style="color: #757575; font-size: 20px; font-style: normal">Все лягушки которых вы собрали</p>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                {% for frog_user in frog_users %}
+                    <div class="col">
+                        <div class="card h-100">
+                            {% if frog_user.frog.image %}
+                                <img src="{{ frog_user.frog.image.url }}" class="card-img-top"
+                                     alt="{{ frog_user.frog.name }}">
+                            {% else %}
+                                <img src="{% static 'img/default-frog.webp' %}" class="card-img-top"
+                                     alt="{{ frog_user.frog.name }}">
+                            {% endif %}
+                            <div class="card-body d-flex flex-column">
+                                <h4 class="card-title">{{ frog_user.frog.name }} ({{ frog_user.quantity }})</h4>
+                                <p class="card-text">{{ frog_user.frog.description|truncatewords:20 }}</p>
+                                <div class="mt-auto">
+                                <span class="badge bg-secondary">
+                                    Редкость: <span style="color: {{ frog_user.rarity.color }};">
+                                    {{ frog_user.frog.rarity.name }}
+                                </span>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="col-12">
+                        <div class="alert alert-info text-center" role="alert">
+                            Вы пока не собрали ни одной лягушки :(
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </section>
 
@@ -29,17 +62,14 @@
             gap: 20px;
             text-align: left;
 
-        .settings, .frogs {
-            background-color: #fafafa;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
+            .settings, .frogs {
+                padding: 15px;
+            }
 
-        .frogs ul {
-            list-style: disc inside;
-            margin: 0;
-            padding: 0;
-        }
+            .frogs ul {
+                list-style: disc inside;
+                margin: 0;
+                padding: 0;
+            }
     </style>
 {% endblock %}

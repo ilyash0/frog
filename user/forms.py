@@ -44,3 +44,14 @@ class SignUpForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         for field_name in ['username', 'email', 'password1', 'password2']:
             self.fields[field_name].help_text = ''
+
+
+class UserSettingsForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'email')
+
+        labels = {
+            'username': 'Имя пользователя',
+            'email': 'Электронная почта',
+        }
