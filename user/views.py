@@ -16,7 +16,7 @@ def signup_view(request):
                 return redirect('home')
     else:
         form = SignUpForm()
-    return render(request, 'accounts/signup.html', {'form': form})
+    return render(request, 'user/signup.html', {'form': form})
 
 
 def login_view(request):
@@ -28,4 +28,4 @@ def login_view(request):
             return redirect('home')  # Замените 'home' на нужный URL
     else:
         form = CustomAuthenticationForm()
-    return render(request, 'accounts/login.html', {'form': form})
+    return render(request, 'user/login.html', {'form': form})
