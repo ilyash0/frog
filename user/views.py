@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import SignUpForm, CustomAuthenticationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
 
 
 def signup_view(request):
@@ -29,3 +31,7 @@ def login_view(request):
     else:
         form = CustomAuthenticationForm()
     return render(request, 'user/login.html', {'form': form})
+
+
+class ProfileView(LoginRequiredMixin, TemplateView):
+    template_name = 'user/profile.html'

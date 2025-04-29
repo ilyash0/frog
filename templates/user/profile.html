@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Профиль пользователя{% endblock %}
+{% block header %}Профиль{% endblock %}
+
+{% block content %}
+    <div class="container" style="min-height: 20vh; align-items: start">
+        <h1 style="margin: 25px" class="card-header">{{ user.username }}</h1>
+    </div>
+    <section class="profile-container">
+        <div class="settings">
+            <h1>Настройки</h1>
+        </div>
+
+        <div class="frogs">
+            <h1>Список лягушек</h1>
+            <ul>
+                <li>Лягушка 1</li>
+                <li>Лягушка 2</li>
+                <li>Лягушка 3</li>
+            </ul>
+        </div>
+    </section>
+
+    <style>
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+
+        .settings, .frogs {
+            background-color: #fafafa;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .frogs ul {
+            list-style: disc inside;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+{% endblock %}
