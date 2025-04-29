@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Список лягушек{% endblock %}
+
+{% block content %}
+    <style>
+
+        .list-container {
+            padding: 1.5rem;
+        }
+
+        .list-container .row {
+            margin: 0;
+            row-gap: 1.5rem;
+            column-gap: 1.5rem;
+        }
+
+        .list-container .card {
+            margin-bottom: 1rem;
+        }
+
+        .list-container .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .list-container .card-title,
+        .list-container .card-text {
+            text-transform: capitalize;
+        }
+    </style>
+
+    <div class="container" style="min-height: 60vh">
+        <div class="card-header">
+            Кодекс лягушек
+        </div>
+        <div class="card-subheader">
+            Список всех доступных лягушек
+        </div>
+    </div>
+
+    <div class="container-fluid list-container">
+        <h1>Лягушки</h1>
+        <p style="color: #757575; font-size: 20px; font-style: normal">Первое поколение лягушек</p>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+            {% for frog in object_list %}
+                <div class="col">
+                    <div class="card h-100">
+                        {% if frog.image %}
+                            <img src="{{ frog.image.url }}" class="card-img-top" alt="{{ frog.name }}">
+                        {% else %}
+                            <img src="{% static 'img/default-frog.webp' %}" class="card-img-top" alt="{{ frog.name }}">
+                        {% endif %}
+                        <div class="card-body d-flex flex-column">
+                            <h4 class="card-title">{{ frog.name }}</h4>
+                            <p class="card-text">{{ frog.description|truncatewords:20 }}</p>
+                            <div class="mt-auto">
+                                <span class="badge bg-secondary">
+                                    Редкость: <span style="color: {{ frog.rarity.color }};">
+                                    {{ frog.rarity.name }}
+                                </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12">
+                    <div class="alert alert-info text-center" role="alert">
+                        Пока не существует ни одной лягушки :(
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
