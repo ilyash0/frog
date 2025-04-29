@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "user.apps.UserConfig",
-    # "frog_app.apps.FrogAppConfig"
+    "frog_app.apps.FrogAppConfig"
 ]
 
 MIDDLEWARE = [
