@@ -197,3 +197,16 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.username {
+    font-size: 16px;
+    color: #333;
+    margin: 0 5px
+}

@@ -18,9 +18,23 @@
 
     <div class="header-right">
         <a href="/" class="header__link">Кодекс лягушек</a>
-        <button class="white-button" style="margin-left: 1.5rem;" onclick="window.location.replace('/login/')">Войти
-        </button>
-        <button class="black-button" onclick="window.location.replace('/signup/')">Зарегистрироваться</button>
+        <p style="margin: 0 20px">|</p>
+        {% if user.is_authenticated %}
+            {% if user.profile.avatar %}
+                <img src="{{ user.profile.avatar.url }}" alt="{{ user.username }}" class="avatar">
+            {% else %}
+                <img src="{% static 'img/default-avatar.webp' %}" alt="{{ user.username }}" width="32px" class="avatar">
+            {% endif %}
+            <span class="username">{{ user.username }}</span>
+            <form action="{% url 'logout' %}" method="post" style="margin:0;">
+                {% csrf_token %}
+                <button type="submit" class="black-button">Выйти</button>
+            </form>
+        {% else %}
+            <button class="white-button" style="margin-left: 1.5rem;" onclick="window.location.replace('/login/')">Войти
+            </button>
+            <button class="black-button" onclick="window.location.replace('/signup/')">Зарегистрироваться</button>
+        {% endif %}
     </div>
 </header>
 
