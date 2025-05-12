@@ -1,38 +1,35 @@
-from django.shortcuts import render, redirect
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
+from django.shortcuts import redirect
 from django.contrib.auth import login, authenticate
+from django.urls import reverse_lazy
 
 from frog_app.models import FrogUser
-from .forms import SignUpForm, CustomAuthenticationForm, UserSettingsForm
+from .forms import SignUpForm, UserSettingsForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
 
 
-def signup_view(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('home')
-    else:
-        form = SignUpForm()
-    return render(request, 'user/signup.html', {'form': form})
+class SignUpView(FormView):
+    template_name = 'user/signup.html'
+    form_class = SignUpForm
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.save()
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password1']
+        user = authenticate(username=username, password=password)
+        if user:
+            login(self.request, user)
+        return super().form_valid(form)
 
 
-def login_view(request):
-    if request.method == 'POST':
-        form = CustomAuthenticationForm(request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect('home')  # Замените 'home' на нужный URL
-    else:
-        form = CustomAuthenticationForm()
-    return render(request, 'user/login.html', {'form': form})
+class CustomLoginView(LoginView):
+    template_name = 'user/login.html'
+    authentication_form = AuthenticationForm
+    redirect_authenticated_user = True
+    next_page = reverse_lazy('home')
 
 
 class ProfileView(LoginRequiredMixin, TemplateView):
