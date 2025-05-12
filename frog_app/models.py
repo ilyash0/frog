@@ -19,6 +19,9 @@ class Frog(models.Model):
     image = models.ImageField(upload_to='img/frog_images/', null=True)
     users = models.ManyToManyField(User, through='FrogUser')
 
+    def __str__(self):
+        return self.name
+
 
 class FrogUser(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
