@@ -49,7 +49,7 @@ class ProfileView(LoginRequiredMixin, TemplateView):
         form = UserSettingsForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('user-profile')
+            return redirect('profile')
         context = self.get_context_data()
         context['settings_form'] = form
         return self.render_to_response(context)
