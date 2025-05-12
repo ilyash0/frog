@@ -65,7 +65,6 @@ class GiftFrogView(LoginRequiredMixin, FormView):
     template_name = 'frog_app/gift.html'
     form_class = GiftFrogForm
     success_url = reverse_lazy('home')
-    # login_url = reverse_lazy('login')
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()

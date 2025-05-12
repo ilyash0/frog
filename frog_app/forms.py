@@ -8,17 +8,14 @@ class GiftFrogForm(forms.Form):
         label='Имя получателя',
         widget=forms.TextInput(attrs={
             'placeholder': 'Введите имя пользователя получателя',
-            'class': 'form-control',
         })
     )
 
     frog = forms.ModelChoiceField(
         queryset=Frog.objects.none(),
         label='Лягушка',
-        empty_label='Выберите лягушку',
-        widget=forms.Select(attrs={
-            'class': 'form-control',
-        })
+        empty_label='Выберите вашу лягушку',
+        widget=forms.Select()
     )
 
     message = forms.CharField(
@@ -26,16 +23,12 @@ class GiftFrogForm(forms.Form):
         required=False,
         widget=forms.Textarea(attrs={
             'placeholder': 'Введите ваше сообщение (необязательно)',
-            'class': 'form-control',
             'rows': 3,
         })
     )
     confirm = forms.BooleanField(
-
         label='Я понимаю, что я больше не увижу эту лягушку',
-        widget=forms.CheckboxInput(attrs={
-            'class': 'form-check-input',
-        })
+        widget=forms.CheckboxInput()
     )
 
     def __init__(self, *args, user=None, **kwargs):
@@ -48,7 +41,7 @@ class GiftFrogForm(forms.Form):
     def clean_recipient_username(self):
         username = self.cleaned_data['recipient_username']
         try:
-            user = User.objects.get(username=username)
+            User.objects.get(username=username)
         except User.DoesNotExist:
             raise forms.ValidationError(f"Пользователь «{username}» не найден.")
         return username
