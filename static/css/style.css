@@ -173,6 +173,7 @@ textarea {
     font-size: 1rem;
     background-color: #fff;
     color: #333;
+    resize: vertical;
 }
 
 input[type="checkbox"] {
