@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'Frog.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": environ["ENGINE"],
         "NAME": environ["DB_NAME"],
         "USER": environ["DB_USER"],
         "PASSWORD": environ["DB_PASSWORD"],
